@@ -27,5 +27,12 @@ RUN yes | pecl install xdebug \
 RUN apt-get clean
 RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-# Adding Composer
+# Installing Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+RUN composer require behat/behat:~3.0
+RUN mkdir /var/www/devops
+
+# Setting up Composer project
+COPY ./devops/composer.json /var/www/devops/composer.json
+CMD composer install -d /var/www/devops
+
