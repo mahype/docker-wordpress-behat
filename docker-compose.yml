@@ -4,11 +4,11 @@ services:
     depends_on:
       - db
     build: ./
-    image: wooplugin:1.0
+    image: wpplugin:1.0
     restart: always
     volumes:
       - ./wp-content:/var/www/html/wp-content
-      - ./devops:/var/devops
+      - ./devops:/var/www/devops
       - ./log:/var/log
     environment:
       WORDPRESS_DB_HOST: db:3306
