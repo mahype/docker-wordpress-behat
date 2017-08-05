@@ -1,4 +1,5 @@
 FROM wordpress:latest
+MAINTAINER Sven Wagener
 
 # Add sudo in order to run wp-cli as the www-data user
 RUN apt-get update && apt-get install -y sudo less
@@ -26,13 +27,3 @@ RUN yes | pecl install xdebug \
 # Cleanup
 RUN apt-get clean
 RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
-# Installing Composer
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-RUN composer require behat/behat:~3.0
-RUN mkdir /var/www/devops
-
-# Setting up Composer project
-COPY ./devops/composer.json /var/www/devops/composer.json
-CMD composer install -d /var/www/devops
-

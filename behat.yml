@@ -1,0 +1,33 @@
+default:
+  suites:
+    default:
+      contexts:
+        - FeatureContext:
+            parameters:
+              screenshot_dir: %paths.base%/screenshots
+
+  extensions:
+    Behat\MinkExtension:
+      base_url: "http://wordpress"
+      goutte: ~
+      selenium2: ~
+      default_session: goutte
+      javascript_session: selenium2
+      browser_name: chrome
+      selenium2:
+        wd_host: http://browser:4444/wd/hub
+        capabilities: { "browser": "chrome", "version": "*" }
+
+    emuse\BehatHTMLFormatter\BehatHTMLFormatterExtension:
+      name: html
+      renderer: Twig,Behat2
+      file_name: index
+      print_args: true
+      print_outp: true
+      loop_break: true
+
+docker:
+  extensions:
+    Behat\MinkExtension:
+      goutte: ~
+      selenium2: ~
