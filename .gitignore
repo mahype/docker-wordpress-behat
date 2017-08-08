@@ -7,5 +7,8 @@ log
 #Config files
 config.cfg
 
-# All Standard WordPress Files from wp-content
+# All standard WordPress files from wp-content
 wordpress
+
+# Custom scripts
+custom-scripts.sh

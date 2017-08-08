@@ -41,6 +41,7 @@ if [ ! -d $plugin_dir ]; then
 fi
 
 docker exec ${container_name}_wordpress_1 wp plugin activate $plugin_slug --allow-root
+#docker exec ${container_name}_wordpress_1 wp scaffold plugin-tests $plugin_slug --allow-root
 
 # Custom user scripts
 if [ -f ./custom-scripts.sh ]; then
