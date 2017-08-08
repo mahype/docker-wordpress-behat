@@ -8,11 +8,4 @@ log
 config.cfg
 
 # All Standard WordPress Files from wp-content
-wordpress/index.php
-wordpress/plugins/index.php
-wordpress/plugins/akismet
-wordpress/plugins/hello.php
-wordpress/themes/index.php
-wordpress/themes/twentyfifteen
-wordpress/themes/twentysixteen
-wordpress/themes/twentyseventeen
+wordpress
