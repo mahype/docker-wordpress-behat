@@ -3,8 +3,10 @@
 dirname=${PWD##*/}
 container_name=${dirname//[-._]/}
 
-echo "Initializing project" >&2
-echo "Reading configuration file." >&2
+echo "Initializing project..." >&2
+sleep 20
+
+echo "Reading configuration file..." >&2
 source ./config.cfg
 
 #Remove what we do not need
@@ -14,7 +16,7 @@ mkdir wordpress/plugins
 plugin_dir="wordpress/plugins/$plugin_slug"
 
 #Getting a bit sure that everything is loaded and then run WP CLI
-sleep 10
+
 
 #Installing WordPress
 docker exec ${container_name}_wordpress_1 wp core install --url=localhost --title=WPPlugin --admin_user=admin --admin_password=admin --admin_email=info@example.com --allow-root

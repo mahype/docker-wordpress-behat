@@ -3,9 +3,9 @@
 echo "Reading config...." >&2
 source ./config.cfg
 
-plugin_dir="wordpress/plugins/"
-rm -rf $plugin_dir
+docker-compose down
 
-mkdir $plugin_dir
+rm -rf wordpress
+rm -rf log
 
 echo "Cleaned up project!"

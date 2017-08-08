@@ -1,12 +1,11 @@
 #!/bin/sh
 
-echo "Starting develop environment!"
+echo "Starting development environment!"
 
 docker-compose up -d
 
-# Adding git repo for plugin
-if [ ! -d wordpress ]; then
-    chmod +x *.sh
-    ./init.sh
+# Initializing project
+if [ ! -d ./wordpress/plugins/ ]; then
+    chmod +x *.sh & ./init.sh
 fi
 
