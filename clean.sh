@@ -3,7 +3,9 @@
 echo "Reading config...." >&2
 source ./config.cfg
 
-#git rm ./$plugin_dir/
+plugin_dir="wordpress/plugins/"
 rm -rf $plugin_dir
 
-echo "Cleaned up project"
+mkdir $plugin_dir
+
+echo "Cleaned up project!"
