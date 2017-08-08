@@ -4,6 +4,9 @@
 #Logfiles
 log
 
+#Config files
+config.cfg
+
 # All Standard WordPress Files from wp-content
 wordpress/index.php
 wordpress/plugins/index.php
