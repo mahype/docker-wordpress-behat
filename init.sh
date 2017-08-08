@@ -22,7 +22,7 @@ plugin_dir="wordpress/plugins/$plugin_slug"
 docker exec ${container_name}_wordpress_1 wp core install --url=localhost --title=WPPlugin --admin_user=admin --admin_password=admin --admin_email=info@example.com --allow-root
 
 #Installing plugins from config
-for plugin in $required_plugins;
+for plugin in  $(echo $required_plugins | sed "s/,/ /g");
     do docker exec ${container_name}_wordpress_1 wp plugin install $plugin --allow-root && docker exec ${container_name}_wordpress_1 wp plugin activate $plugin --allow-root
 done
 
@@ -41,3 +41,8 @@ if [ ! -d $plugin_dir ]; then
 fi
 
 docker exec ${container_name}_wordpress_1 wp plugin activate $plugin_slug --allow-root
+
+# Custom user scripts
+if [ -f ./custom-scripts.sh ]; then
+    ./custom-scripts.sh
+fi
