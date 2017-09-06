@@ -1,33 +1,30 @@
 default:
   suites:
     default:
+      paths:
+        - %paths.base%/tests/behat
+
       contexts:
-        - FeatureContext:
-            parameters:
-              screenshot_dir: %paths.base%/screenshots
+        - PluginTests\FeatureContext
+        - Behat\MinkExtension\Context\MinkContext
+        - PaulGibbs\WordpressBehatExtension\Context\ContentContext
 
   extensions:
     Behat\MinkExtension:
-      base_url: "http://wordpress"
-      goutte: ~
-      selenium2: ~
-      default_session: goutte
+      base_url: http://wordpress:8080
+      default_session: default
       javascript_session: selenium2
-      browser_name: chrome
-      selenium2:
-        wd_host: http://browser:4444/wd/hub
-        capabilities: { "browser": "chrome", "version": "*" }
+      sessions:
+        default:
+          goutte:
+            guzzle_parameters:
+              verify: false  # Allow self-signed SSL certificates
+        selenium2:
+          selenium2: ~
 
-    emuse\BehatHTMLFormatter\BehatHTMLFormatterExtension:
-      name: html
-      renderer: Twig,Behat2
-      file_name: index
-      print_args: true
-      print_outp: true
-      loop_break: true
-
-docker:
-  extensions:
-    Behat\MinkExtension:
-      goutte: ~
-      selenium2: ~
+    PaulGibbs\WordpressBehatExtension:
+      path: /tmp/wordpress/
+      users:
+        admin:
+          username: admin
+          password: password
